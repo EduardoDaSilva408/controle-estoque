@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+    font-family: 'Segoe UI ', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1vw
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+}
+a{
+    color: black!important;
+}
+#cabeca{
+    background-color: #87CEEB;
+    height: 14%;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.2%;
+}
+#logo-container{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#logo{
+    width: 8vw;
+    height: auto;
+    cursor: pointer;
+}
+#placares{
+    width: 92%; 
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+    overflow-x: auto;
+    align-items: center;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+}
+.placar{
+    min-width: 10vw;
+    margin: 0.5vw;    
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#corpo{
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+#navbar{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border-right: 0.1vw solid black;
+    margin-bottom: 2.8%;
+}
+.navbutton{
+    width: 10vw;
+    height: 3vw;
+    margin: 0.5vw;
+    padding: 1%;
+    text-align: center;
+    border-radius: 5%;
+    border: 0.1vw solid;
+}
+.navbutton:hover{
+    background-color: #87CEEB;
+    width: 10vw;
+    height: 3vw;
+    margin: 0.5vw;
+    padding: 1%;
+    text-align: center;
+    border-radius: 5%;
+    border: 0.1vw solid #87CEEB;
+}
+#content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-bottom: 2.8%;
+}
+.footer{
+    padding-top: 10%;
+    
+}
+#footer{
+    background-color: #87CEEB;
+    height: 0.5%;
+    width: 100%;
+    margin-top: 1vw;
+    position: fixed;
+    bottom: 0.3vw;
+}
+#tabela{
+    margin-left: 10vw;
+}
+.lista{
+    background-color: #87CEEB;
+}
+.lista_alunos{
+    margin-left: 1vw;
+}
