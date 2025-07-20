@@ -5,6 +5,7 @@ function list(){
     .then(produtos => {
         var html = '';
         for(let produto of produtos){
+            console.log(JSON.parse(localStorage.getItem('cart') || '[]').includes(produto.produtos_id))
             html += `
                 <tr>
                     <td>${produto.produtos_id}</td>
@@ -19,7 +20,7 @@ function list(){
                         <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-3 py-1 rounded shadow" onclick="deletaProduto(${produto.produtos_id})">
                             Apagar
                         </button>
-                        <button class="bg-green-300 hover:bg-green-300 text-white font-semibold px-3 py-1 rounded shadow" onclick="addToCart(${produto.produtos_id})">
+                        <button class="bg-green-500 hover:bg-green-600 text-white font-semibold px-3 py-1 rounded shadow" onclick="openCart(${produto.produtos_id})">
                             Comprar
                         </button>
                     </td>

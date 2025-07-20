@@ -54,10 +54,14 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['testando'] = 'testando';
 
-
+//Produtos
 $route['produtos'] = 'produtos';
 $route['produtos/add'] = 'produtos/add';
 $route['produtos/list'] = 'produtos/list';
 $route['produtos/(:num)'] = 'produtos/getProdutoById/$1';
 $route['produtos/(:num)/edit'] = 'produtos/edit/$1';
 $route['produtos/(:num)/delete'] = 'produtos/delete/$1';
+
+//Pedidos
+$route['pedidos/add'] = 'pedidos/add';
+$route['pedidos/frete'] = 'pedidos/frete';

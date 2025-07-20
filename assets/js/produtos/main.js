@@ -8,6 +8,7 @@ function openModalAdd() {
 
 function closeModal() {
     document.getElementById('produtoModal').classList.add('hidden');
+    document.getElementById("cartModal").classList.add('hidden');
 }
 
 async function openModalEdit(produtos_id){
@@ -39,8 +40,27 @@ async function deletaProduto(produtos_id){
     return data;
 }
 
-function addToCart(produtos_id){
-    var cart = localStorage.getItem('cart') || [];
-    cart.push(produtos_id);
-    localStorage.setItem('cart', cart)
+function addToCart(produtos_id) {
+    // Recupera o carrinho existente ou cria um novo array
+    var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    // Adiciona o ID ao carrinho
+    if(!cart.includes(produtos_id)){
+        cart.push(produtos_id)
+    }
+    
+    console.log(cart)
+    // Armazena o carrinho atualizado
+    localStorage.setItem('cart', JSON.stringify(cart));
+    list();
+}
+
+function removeToCart(produtos_id){
+     var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+      if(cart.includes(produtos_id)){
+        cart.pop(produtos_id)
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    list();
 }

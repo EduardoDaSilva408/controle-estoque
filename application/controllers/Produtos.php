@@ -28,6 +28,7 @@ class Produtos extends CI_Controller {
             <script src="' . base_url('assets/js/enviaFormulario.js') . '"></script>
             <script src="' . base_url('assets/js/produtos/list.js') . '"></script>
             <script src="' . base_url('assets/js/produtos/main.js') . '"></script>
+			<script src="' . base_url('assets/js/produtos/cart.js') . '"></script>
         ';
 
         // Monta o layout base, inserindo conteúdo e imports
