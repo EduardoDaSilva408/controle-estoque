@@ -53,4 +53,11 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['testando'] = 'testando';
+
+
 $route['produtos'] = 'produtos';
+$route['produtos/add'] = 'produtos/add';
+$route['produtos/list'] = 'produtos/list';
+$route['produtos/(:num)'] = 'produtos/getProdutoById/$1';
+$route['produtos/(:num)/edit'] = 'produtos/edit/$1';
+$route['produtos/(:num)/delete'] = 'produtos/delete/$1';

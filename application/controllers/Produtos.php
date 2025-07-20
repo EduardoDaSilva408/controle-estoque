@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Produtos extends CI_Controller {
 
 	/**
@@ -26,9 +25,9 @@ class Produtos extends CI_Controller {
         // CSS e JS adicionais
         $css = '<link rel="stylesheet" type="text/css" href="' . base_url('assets/css/formulario.css') . '">';
         $js = '
-            <script src="' . base_url('js/enviaFormulario.js') . '"></script>
-            <script src="' . base_url('js/produtos/list.js') . '"></script>
-            <script src="' . base_url('js/produtos/main.js') . '"></script>
+            <script src="' . base_url('assets/js/enviaFormulario.js') . '"></script>
+            <script src="' . base_url('assets/js/produtos/list.js') . '"></script>
+            <script src="' . base_url('assets/js/produtos/main.js') . '"></script>
         ';
 
         // Monta o layout base, inserindo conteúdo e imports
@@ -37,5 +36,41 @@ class Produtos extends CI_Controller {
             'css' => $css,
             'js' => $js
         ]);
+	}
+
+	public function add(){
+		$this->load->model('Produto_model');
+
+		$response = $this->Produto_model->add($_POST);
+		header('Content-Type: application/json');
+		echo json_encode($response);
+	}
+
+	public function list(){
+		$this->load->model('Produto_model');
+		$response = $this->Produto_model->list();
+		header('Content-Type: application/json');
+		echo json_encode($response);
+	}
+
+	public function getProdutoById(int $id){
+		$this->load->model('Produto_model');
+		$response = $this->Produto_model->getProdutoById($id);
+		header('Content-Type: application/json');
+		echo json_encode($response);
+	}
+
+	public function edit(int $id){
+		$this->load->model('Produto_model');
+		$response = $this->Produto_model->edit($_POST, $id);
+		header('Content-Type: application/json');
+		echo json_encode($response);
+	}
+
+	public function delete(int $id){
+		$this->load->model('Produto_model');
+		$response = $this->Produto_model->delete($id);
+		header('Content-Type: application/json');
+		echo json_encode($response);
 	}
 }
