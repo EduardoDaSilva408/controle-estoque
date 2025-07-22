@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Produtos extends CI_Controller {
+class Cupons extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,15 +20,14 @@ class Produtos extends CI_Controller {
 	public function index()
 	{
         // Carrega a view parcial do conteúdo
-        $content = $this->load->view('produtos', [], true);
+        $content = $this->load->view('cupons', [], true);
 
         // CSS e JS adicionais
         $css = '<link rel="stylesheet" type="text/css" href="' . base_url('assets/css/formulario.css') . '">';
         $js = '
             <script src="' . base_url('assets/js/enviaFormulario.js') . '"></script>
-            <script src="' . base_url('assets/js/produtos/list.js') . '"></script>
-            <script src="' . base_url('assets/js/produtos/main.js') . '"></script>
-			<script src="' . base_url('assets/js/produtos/cart.js') . '"></script>
+            <script src="' . base_url('assets/js/cupons/list.js') . '"></script>
+            <script src="' . base_url('assets/js/cupons/main.js') . '"></script>
         ';
 
         // Monta o layout base, inserindo conteúdo e imports
@@ -40,45 +39,37 @@ class Produtos extends CI_Controller {
 	}
 
 	public function add(){
-		$this->load->model('Produto_model');
+		$this->load->model('Cupons_model');
 
-		$response = $this->Produto_model->add($_POST);
-		header('Content-Type: application/json');
-		echo json_encode($response);
-	}
-
-	public function select2(){
-		$this->load->model('Produto_model');
-
-		$response = $this->Produto_model->select2($_POST);
+		$response = $this->Cupons_model->add($_POST);
 		header('Content-Type: application/json');
 		echo json_encode($response);
 	}
 
 	public function list(){
-		$this->load->model('Produto_model');
-		$response = $this->Produto_model->list();
+		$this->load->model('Cupons_model');
+		$response = $this->Cupons_model->list();
 		header('Content-Type: application/json');
 		echo json_encode($response);
 	}
 
 	public function getProdutoById(int $id){
-		$this->load->model('Produto_model');
-		$response = $this->Produto_model->getProdutoById($id);
+		$this->load->model('Cupons_model');
+		$response = $this->Cupons_model->getProdutoById($id);
 		header('Content-Type: application/json');
 		echo json_encode($response);
 	}
 
 	public function edit(int $id){
-		$this->load->model('Produto_model');
-		$response = $this->Produto_model->edit($_POST, $id);
+		$this->load->model('Cupons_model');
+		$response = $this->Cupons_model->edit($_POST, $id);
 		header('Content-Type: application/json');
 		echo json_encode($response);
 	}
 
 	public function delete(int $id){
-		$this->load->model('Produto_model');
-		$response = $this->Produto_model->delete($id);
+		$this->load->model('Cupons_model');
+		$response = $this->Cupons_model->delete($id);
 		header('Content-Type: application/json');
 		echo json_encode($response);
 	}

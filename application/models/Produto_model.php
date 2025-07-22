@@ -28,37 +28,46 @@ class Produto_model extends CI_Model {
         return $this->db->get('produtos')->result();
     }
 
+    public function select2():array{
+        return $this->db->select('produtos_id as value, nome as text')->get('produtos')->result();
+    }
+
     public function getProdutoById(int $produtos_id){
         return $this->db->join('estoque', 'estoque.produtos_id = produtos.produtos_id', 'left')->where('produtos.produtos_id', $produtos_id)->get('produtos')->result()[0];
     }
 
     public function getEstoqueByProdutoId(int $produto_id):array{
-        $response = $this->db->where('produtos_id', $produto_id)->get('estoque')->result();
+        $response = json_decode(json_encode($this->db->where('produtos_id', $produto_id)->get('estoque')->result()), true);
         return $response[0] ?? $response;
     }
 
-    public function edit(array $data, int $produtos_id){
+    public function edit(array $data, int $produtos_id) {
         $dataUpdate['nome'] = addslashes($data['nome']);
         $dataUpdate['variacoes'] = addslashes($data['variacoes']);
         $dataUpdate['preco'] = $data['preco'];
 
+        // Atualiza o produto
         $this->db->where('produtos_id', $produtos_id);
-        $estoque = $this->getEstoqueByProdutoId($produtos_id);
-        
         $update = $this->db->update('produtos', $dataUpdate);
+
         if(!$update)
-            return $update;
-        //Atualiza o estoque.
-        
+            return false;
+
+        // Atualiza ou insere estoque
+        $estoque = $this->getEstoqueByProdutoId($produtos_id);
         $dataUpdateEstoque['quantidade'] = $data['quantidade'];
-        if(!empty($estoque)){
+
+        if(!empty($estoque)) {
+            $this->db->where('produtos_id', $produtos_id);  // <-- ESSENCIAL
             $this->db->update('estoque', $dataUpdateEstoque);
-        }else{
+        } else {
             $dataUpdateEstoque['produtos_id'] = $produtos_id;
             $this->db->insert('estoque', $dataUpdateEstoque);
         }
+
         return true;
     }
+
 
     public function delete($produtos_id) {
         $this->db->where('produtos_id', $produtos_id);

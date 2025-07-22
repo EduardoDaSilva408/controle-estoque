@@ -58,6 +58,7 @@ $route['testando'] = 'testando';
 $route['produtos'] = 'produtos';
 $route['produtos/add'] = 'produtos/add';
 $route['produtos/list'] = 'produtos/list';
+$route['produtos/select2'] = 'produtos/select2';
 $route['produtos/(:num)'] = 'produtos/getProdutoById/$1';
 $route['produtos/(:num)/edit'] = 'produtos/edit/$1';
 $route['produtos/(:num)/delete'] = 'produtos/delete/$1';
@@ -65,3 +66,14 @@ $route['produtos/(:num)/delete'] = 'produtos/delete/$1';
 //Pedidos
 $route['pedidos/add'] = 'pedidos/add';
 $route['pedidos/frete'] = 'pedidos/frete';
+
+//Cupons
+$route['cupons'] = 'cupons';
+$route['cupons/add'] = 'cupons/add';
+$route['cupons/list'] = 'cupons/list';
+$route['cupons/(:num)'] = 'cupons/getProdutoById/$1';
+$route['cupons/(:num)/edit'] = 'cupons/edit/$1';
+$route['cupons/(:num)/delete'] = 'cupons/delete/$1';
+
+//Webhook
+$route['webhook'] = 'webhook';

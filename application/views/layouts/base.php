@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Include Tom Select -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
     <title>Teste MontInk | Início</title>
 
     <?php if (isset($css)) { echo $css; } ?>
@@ -17,6 +20,7 @@
         <nav class="space-x-4">
             <a href="/" class="text-blue-600 hover:underline">Página Inicial</a>
             <a href="/produtos" class="text-blue-600 hover:underline">Produtos</a>
+            <a href="/cupons" class="text-blue-600 hover:underline">Cupons</a>
         </nav>
     </div>
 </header>
