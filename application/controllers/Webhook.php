@@ -18,6 +18,10 @@ class Webhook extends CI_Controller {
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
 	public function index(){
-        
+        $this->load->model('Produto_model');
+		$response = $this->Produto_model->changeStatusPedido($_POST);
+
+		header('Content-Type: application/json');
+		echo json_encode($response);
 	}
 }

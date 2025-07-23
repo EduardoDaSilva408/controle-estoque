@@ -86,6 +86,7 @@
             <div class="mt-6">
                 <input type="email" inputmode="email" id="emailCliente" placeholder="Seu E-mail" name="email" class="w-full border rounded p-2 mb-3">
                 <input type="text" id="cepEntrega" name="cep" placeholder="CEP para Entrega" class="w-full border rounded p-2 mb-3">
+                <input type="text" id="cupom" name="cupom" placeholder="Cupom para desconto" class="w-full border rounded p-2 mb-3" oninput="verifyCupom(this.value);">
             </div>
             <div class="flex justify-end space-x-3 mt-4">
                 <h3 class="text-xl font-bold mb-4">Frete: <span id="frete-cart"></span></h3>

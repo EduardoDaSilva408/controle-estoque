@@ -36,6 +36,19 @@ class Pedidos_model extends CI_Model {
         $dataInsert['frete'] = $this->calculaFrete($data['produtos_id'], $data['quantidade']);
         $dataInsert['valor_total'] = $produto['preco'] * $data['quantidade'] + $dataInsert['frete'];
 
+        //Checa se tem cupom.
+        if(!empty($data['cupom'])){
+            //checa se o cupom é valido.
+            $cupom = json_decode(json_encode($this->getCupomByCode($data['cupom'])), true);
+            if(!empty($cupom)){
+                if($cupom['percentual'] == 1){
+                    $dataInsert['valor_total'] -= ($dataInsert['valor_total'] / $cupom['valor']);
+                }else{
+                    $dataInsert['valor_total'] -= $cupom['valor'];
+                }
+            }
+        }
+
         $this->db->insert('pedidos',$dataInsert);
 
         $pedidos_id = $this->db->insert_id();  // <- CORRETO: ID do produto inserido
@@ -97,5 +110,9 @@ class Pedidos_model extends CI_Model {
             $frete = 20;
         }
         return $frete;
+    }
+
+    public function getCupomByCode(string $code){
+        return $this->db->where('cupom.codigo', $code)->get('cupom')->result()[0] ?? [];
     }
 }

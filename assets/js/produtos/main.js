@@ -64,3 +64,4 @@ function removeToCart(produtos_id){
     localStorage.setItem('cart', JSON.stringify(cart));
     list();
 }
+

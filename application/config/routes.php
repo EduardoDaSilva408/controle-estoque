@@ -71,9 +71,10 @@ $route['pedidos/frete'] = 'pedidos/frete';
 $route['cupons'] = 'cupons';
 $route['cupons/add'] = 'cupons/add';
 $route['cupons/list'] = 'cupons/list';
-$route['cupons/(:num)'] = 'cupons/getProdutoById/$1';
+$route['cupons/(:num)'] = 'cupons/getCupomById/$1';
 $route['cupons/(:num)/edit'] = 'cupons/edit/$1';
 $route['cupons/(:num)/delete'] = 'cupons/delete/$1';
+$route['cupons/code/(:any)'] = 'cupons/getCupomByCode/$1';
 
 //Webhook
 $route['webhook'] = 'webhook';

@@ -53,9 +53,16 @@ class Cupons extends CI_Controller {
 		echo json_encode($response);
 	}
 
-	public function getProdutoById(int $id){
+	public function getCupomById(int $id){
 		$this->load->model('Cupons_model');
-		$response = $this->Cupons_model->getProdutoById($id);
+		$response = $this->Cupons_model->getCupomById($id);
+		header('Content-Type: application/json');
+		echo json_encode($response);
+	}
+
+	public function getCupomByCode(string $code){
+		$this->load->model('Cupons_model');
+		$response = $this->Cupons_model->getCupomByCode($code);
 		header('Content-Type: application/json');
 		echo json_encode($response);
 	}

@@ -16,7 +16,7 @@ function list(){
                             Editar
                         </button>
                         <!-- Botão Apagar -->
-                        <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-3 py-1 rounded shadow" onclick="deletaProduto(${cupom.cupom_id})">
+                        <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-3 py-1 rounded shadow" onclick="deletaCupom(${cupom.cupom_id})">
                             Apagar
                         </button>
                     </td>

@@ -16,6 +16,7 @@
                 <th class="p-2 border-b">Codigo</th>
                 <th class="p-2 border-b">Valor</th>
                 <th class="p-2 border-b">Vencimento</th>
+                <th class="p-2 border-b">Ação</th>
             </tr>
         </thead>
         <tbody id="tabela-cupons">
@@ -25,10 +26,10 @@
 </div>
 
 <!-- Modal -->
-<div id="produtoModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+<div id="cupomModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
    
     <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-6 relative">
-        <form action="/cupons/add" id="form-produto" method="post">
+        <form action="/cupons/add" id="form-cupom" method="post">
 
             <!-- Botão Fechar -->
             <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">
@@ -40,7 +41,7 @@
             <input type="hidden" id="cupom_id">
             <div>
                 <label>Produto: </label>
-                <select name="produtos_id" id="produtos_id" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 produtos_id"></select>
+                <select name="produtos_id" id="cupom-produtos_id" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 produtos_id" style="width: 100%;"></select>
             </div>
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700">Código:</label>

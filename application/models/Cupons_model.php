@@ -9,6 +9,7 @@ class Cupons_model extends CI_Model {
         $dataInsert['valor'] = $data['valor'];
         $dataInsert['percentual'] = isset($data['percentual']) ? 1 : 0;
         $dataInsert['vencimento'] = $data['vencimento'];
+        $dataInsert['produtos_id'] = $data['produtos_id'];
 
         $this->db->insert('cupom',$dataInsert);
 
@@ -23,7 +24,11 @@ class Cupons_model extends CI_Model {
     }
 
     public function getCupomById(int $cupom_id){
-        return $this->db->join('produtos', 'produtos.produtos_id = cupom.produtos_id', 'inner')->where('cupom.cupom_id', $cupom_id)->get('cupom')->result()[0];
+        return $this->db->join('produtos', 'produtos.produtos_id = cupom.produtos_id', 'inner')->where('cupom.cupom_id', $cupom_id)->get('cupom')->result()[0] ?? [];
+    }
+
+    public function getCupomByCode(string $code){
+        return $this->db->where('cupom.codigo', $code)->get('cupom')->result()[0] ?? [];
     }
 
     public function edit(array $data, int $cupom_id){

@@ -13,9 +13,10 @@ document.querySelectorAll('form').forEach(function(form) {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             Swal.fire({
                 title: "Enviado!",
-                text: data,
+                text: data.message || 'dados recebidos corretamente',
             }).then(() => {
                 form.reset();
                 if(typeof closeModal === 'function'){

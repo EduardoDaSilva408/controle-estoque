@@ -29,7 +29,7 @@ class Produto_model extends CI_Model {
     }
 
     public function select2():array{
-        return $this->db->select('produtos_id as value, nome as text')->get('produtos')->result();
+        return $this->db->select('produtos_id as id, nome as text')->get('produtos')->result();
     }
 
     public function getProdutoById(int $produtos_id){
@@ -73,5 +73,19 @@ class Produto_model extends CI_Model {
         $this->db->where('produtos_id', $produtos_id);
         $delete = $this->db->delete('produtos');
         return $delete;
+    }
+
+    public function changeStatusPedido(array $data){
+        $pedidos_id = $data['pedidos_id'];
+        $dataUpdate['status'] = $data['status'];
+        $this->db->where('pedidos_id', $pedidos_id);
+        $update = $this->db->update('pedidos', $dataUpdate);
+
+        if($update){
+            $response['success'] = "Webhook atualizado com sucesso";
+        }else{
+            $response['error'] = "Falha ao processar webhook";
+        }
+        return $response;
     }
 }

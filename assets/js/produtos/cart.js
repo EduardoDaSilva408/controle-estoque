@@ -13,6 +13,8 @@ async function openCart(produto_id) {
             <input type="hidden" name="produtos_id" value="${produto_id}">
             <input type="hidden" name="valor_unitario" value="${produto.preco}">
             <input type="hidden" name="frete" value="" id="cart-frete-input">
+            <input type="hidden" name="discount" value="" id="cupom-discount">
+            <input type="hidden" name="percent" value="" id="cupom-percent">
             <p class="font-semibold">${produto.nome}</p>
             <p class="text-sm text-gray-500">${produto.variacoes}</p>
         </div>
@@ -91,8 +93,15 @@ function finalizarPedido() {
 function preencheValorTotal(){
     var form = document.getElementById('cart-form');
     var valor_total = parseInt(form.quantidade.value) * parseFloat(form.valor_unitario.value) + parseFloat(form.frete.value);
+    if(document.getElementById('cupom-discount').value){
+        if(document.getElementById('cupom-percent').value == '1'){
+            valor_total -= (valor_total / document.getElementById('cupom-discount').value);
+        }else{
+            valor_total -= document.getElementById('cupom-discount').value;
+        }
+    }
     console.log(form.frete.value);
-    document.getElementById('valor-total-cart').innerText = valor_total;
+    document.getElementById('valor-total-cart').innerText = valor_total.toFixed(2);
 }
 
 async function calculaFrete(){
@@ -108,4 +117,20 @@ async function calculaFrete(){
     document.getElementById('frete-cart').innerText = "R$ "+ frete;
     document.getElementById('cart-frete-input').value = frete;
     preencheValorTotal();
+}
+
+function verifyCupom(cupom_code) {
+    fetch('/cupons/code/'+cupom_code, )
+        .then(response => response.json())
+        .then(data => {
+            if(data.valor){
+                document.getElementById('cupom-discount').value = data.valor;
+                document.getElementById('cupom-percent').value = data.percentual;
+                preencheValorTotal();
+            }else{
+                document.getElementById('cupom-discount').value = '';
+                document.getElementById('cupom-percent').value = '';
+                preencheValorTotal();
+            }
+        });
 }
