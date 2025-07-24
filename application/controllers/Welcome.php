@@ -20,6 +20,23 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		// Carrega a view parcial do conteúdo
+        $content = '';
+
+        // CSS e JS adicionais
+        $css = '<link rel="stylesheet" type="text/css" href="' . base_url('assets/css/formulario.css') . '">';
+        $js = '
+            <script src="' . base_url('assets/js/enviaFormulario.js') . '"></script>
+            <script src="' . base_url('assets/js/produtos/list.js') . '"></script>
+            <script src="' . base_url('assets/js/produtos/main.js') . '"></script>
+			<script src="' . base_url('assets/js/produtos/cart.js') . '"></script>
+        ';
+
+        // Monta o layout base, inserindo conteúdo e imports
+        $this->load->view('layouts/base', [
+            'content' => $content,
+            'css' => $css,
+            'js' => $js
+        ]);
 	}
 }
